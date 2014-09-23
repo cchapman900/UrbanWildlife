@@ -1,0 +1,39 @@
+%h1 Welcome to NYC Wildlife!
+	
+.col-md-3
+	.row
+		%h3= link_to 'Browse most common animals:', {:controller => animals_path, :sort=>'occurance', :direction=>'desc'}
+		
+		#common-carousel.carousel.slide{'data-ride'=>'carousel'}
+			%ol.carousel-indicators
+				%li.active{'data-target'=>'#common-carousel', 'data-slide-to'=>'0'}
+				%li{'data-target'=>'#common-carousel', 'data-slide-to'=>'1'}
+				%li{'data-target'=>'#common-carousel', 'data-slide-to'=>'2'}
+			.carousel-inner
+				.item.active
+					=image_tag 'animals/pigeon.jpg', :class=>'resize'
+					.carousel-caption
+						%h3 Pigeon
+				.item
+					=image_tag 'animals/gray_squirrel.jpg', :class=>'resize'
+					.carousel-caption
+						%h3 Gray Squirrel
+				.item
+					=image_tag 'animals/sparrow.jpg', :class=>'resize'
+					.carousel-caption
+						%h3 House Sparrow
+			%a.left.carousel-control{'href'=>'#common-carousel', 'role'=>'button', 'data-slide'=>'prev'}
+				%span.glyphicon.glyphicon-chevron-left
+			%a.right.carousel-control{'href'=>'#common-carousel', 'role'=>'button', 'data-slide'=>'next'}
+				%span.glyphicon.glyphicon-chevron-right
+.col-md-1
+
+.col-md-4
+	%h3 Browse all animals:
+	%p=link_to 'Animals', animals_path
+	
+.col-md-1
+		
+.col-md-3
+	%h3 Browse strangest NYC animals:
+	%p=link_to 'Animals', animals_path

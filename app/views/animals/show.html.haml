@@ -1,0 +1,52 @@
+.row
+	.col-md-6
+		=image_tag @animal.image_url, :class => 'resize'
+	.col-md-6
+		%h1= @animal.name
+		%p
+			=link_to 'Animal', animals_path
+			>
+			=link_to @animal.animal_type, '#'
+			>
+			=link_to @animal.type_size, '#'
+		.row
+			.col-xs-6.col-md-12
+				%h2 Confirmed Locations
+				%p= @animal.confirmed_locations
+			.col-xs-6.col-md-12
+				%h2 Timing
+				%p 
+					<strong>Time of Year:</strong> 
+					= @animal.timing_year
+				%p 
+					<strong>Time of Day:</strong> 
+					= @animal.timing_day
+			
+%hr
+.row
+	.col-md-4
+		%h2 Similar Animals
+		.row
+			.col-xs-6.col-md-4
+				=image_tag 'animals/muskrat.jpg', :class => 'resize'
+			.col-xs-6.col-md-8
+				%h3 Muskrat
+				%p <strong>Similarity:</strong> 40%
+				%p <strong>Similarities:</strong> Similar shape and color.
+				%p <strong>Differences:</strong> Muskrat is primarily only around water. Groundhog is typically in grassy areas. So far, I haven't seen any muskrats in NYC.
+		.row
+			.col-xs-6.col-md-4
+				=image_tag 'animals/eastern_cottentail.jpg', :class => 'resize'
+			.col-xs-6.col-md-8
+				%h3 Eastern Cottentail
+				%p <strong>Similarity:</strong> 30%
+				%p <strong>Similarities:</strong> Similar size and color. If it's hiding in the bushes, could be hard to tell. 
+				%p <strong>Differences:</strong> The rabbit is a lot quicker. With a clear view, it's pretty easy to see which is which.
+		.row
+			.col-md-12
+				%h2 More Info
+				%p
+					=@animal.more_info
+	.col-md-8
+		%h2 Sightings
+		%iframe{:width=>'100%', :height=>'480px', :frameborder=>'0', :style=>'border:0', :src=>@animal.map_url}

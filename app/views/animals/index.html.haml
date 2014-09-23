@@ -1,0 +1,31 @@
+.col-md-3
+	%h1 Animals
+.col-md-3
+	%h3 Sort by:
+.col-md-6
+
+%table.table
+	%tr
+		%th.col-xs-1.field-label.active
+		%th.col-xs-3.field-label.active= sortable 'name', 'Animal Name'
+		%th.col-xs-2.field-label.active
+		%th.col-xs-2.field-label.active= sortable 'animal_type', 'Type'
+		%th.col-xs-2.field-label.active=sortable 'type_size', 'Relative Size'
+		%th.col-xs-2.field-label.active= sortable 'occurance', 'Occurance in NYC'
+	- @animals.each do |a|
+		%tr
+			%td.col-xs-1
+				=image_tag a.image_url, :class=>'small'
+			%td.col-xs-4= link_to a.name, animal_path(a)
+			%td.col-xs-1
+				-if a.timing_day.include? "Day" 
+					=image_tag 'day_icon.jpg', :title => 'Seen during the day'
+				-if a.timing_day.include? "Night" 
+					=image_tag 'night_icon.jpg', :title => 'Seen at night'
+				-if a.location_type.include? "Outdoors" 
+					=image_tag 'outdoors_icon.jpg', :title => 'Lives outdoors'
+				-if a.location_type.include? "Indoors" 
+					=image_tag 'indoors_icon.jpg', :title => 'Lives indoors'
+			%td.col-xs-2= a.animal_type
+			%td.col-xs-2= a.type_size
+			%td.col-xs-2= a.occurance.titleize
